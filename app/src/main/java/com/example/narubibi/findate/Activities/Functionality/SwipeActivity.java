@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.narubibi.findate.Activities.Authentication.ChooseLoginRegisterActivity;
+import com.example.narubibi.findate.Activities.Authentication.LoginActivity;
 import com.example.narubibi.findate.R;
 import com.example.narubibi.findate._Match.MatchesActivity;
 import com.example.narubibi.findate._User.User;
@@ -190,12 +191,16 @@ public class SwipeActivity extends AppCompatActivity {
 
             }
         });
+    }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 
     public void logout(View view) {
         firebaseAuth.signOut();
-        Intent intent = new Intent(SwipeActivity.this, ChooseLoginRegisterActivity.class);
+        Intent intent = new Intent(SwipeActivity.this, LoginActivity.class);
         startActivity(intent);
         finish();
     }

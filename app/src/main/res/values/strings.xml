@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">Findate</string>
+
+    <!-- Menu String -->
+    <string name="menu_action_logout_text">Log out</string>
+    <string name="menu_action_setting_text">Setting</string>
+
+    <!-- Log in -->
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="btn_login">Log in</string>
+    <string name="btn_forgot_password">Forgot your password?</string>
+    <string name="btn_signup">Not a member? Sign up now!</string>
+
+    <!-- Sign up -->
+    <string name="username">Enter your username</string>
+    <string name="email">Enter your email</string>
+    <string name="password">Enter your password</string>
+    <string name="repassword">Confirm your password</string>
+    <string name="yourname">Enter your name</string>
+    <string name="gender">Your gender</string>
+    <string name="btn_sign_up">Sign up</string>
 </resources>

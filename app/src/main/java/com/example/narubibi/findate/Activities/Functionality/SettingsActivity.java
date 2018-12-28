@@ -213,4 +213,10 @@ public class SettingsActivity extends AppCompatActivity {
             imageViewProfilePicture.setImageURI(resultUri);
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        endActivity();
+    }
 }
