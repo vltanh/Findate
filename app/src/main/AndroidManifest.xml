@@ -12,9 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Activities.Functionality.SwipeActivity" />
-        <activity android:name=".Activities.Authentication.ChooseLoginRegisterActivity">
-
-        </activity>
+        <activity android:name=".Activities.Authentication.ChooseLoginRegisterActivity"></activity>
         <activity android:name=".Activities.Authentication.RegisterActivity" />
         <activity android:name=".Activities.Authentication.LoginActivity">
             <intent-filter>
@@ -24,7 +22,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activities.Functionality.SettingsActivity" />
-        <activity android:name=".Activities.Functionality.MatchesActivity"></activity>
+        <activity android:name="._Match.MatchesActivity" />
+        <activity android:name="._Chat.ChatActivity"></activity>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.example.narubibi.findate.Activities.Functionality;
+package com.example.narubibi.findate._Match;
 
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -7,8 +7,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.example.narubibi.findate.R;
-import com.example.narubibi.findate._Match.Match;
-import com.example.narubibi.findate._Match.MatchAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

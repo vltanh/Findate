@@ -6,11 +6,11 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.narubibi.findate.Activities.Authentication.ChooseLoginRegisterActivity;
 import com.example.narubibi.findate.R;
+import com.example.narubibi.findate._Match.MatchesActivity;
 import com.example.narubibi.findate._User.User;
 import com.example.narubibi.findate._User.UserAdapter;
 import com.google.firebase.auth.FirebaseAuth;
@@ -107,8 +107,11 @@ public class SwipeActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
                     Toast.makeText(SwipeActivity.this, "Found a match!", Toast.LENGTH_LONG).show();
-                    usersDb.child(dataSnapshot.getKey()).child("connections").child("match").child(currentUId).setValue(true);
-                    usersDb.child(currentUId).child("connections").child("match").child(dataSnapshot.getKey()).setValue(true);
+
+                    String key = FirebaseDatabase.getInstance().getReference().child("Chat").push().getKey();
+
+                    usersDb.child(dataSnapshot.getKey()).child("connections").child("match").child(currentUId).child("chat_id").setValue(key);
+                    usersDb.child(currentUId).child("connections").child("match").child(dataSnapshot.getKey()).child("chat_id").setValue(key);
                 }
             }
 
