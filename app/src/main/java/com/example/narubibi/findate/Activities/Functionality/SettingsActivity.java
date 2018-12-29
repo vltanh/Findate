@@ -77,10 +77,6 @@ public class SettingsActivity extends AppCompatActivity {
         imageViewProfilePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(Intent.ACTION_PICK);
-//                intent.setType("image/*");
-//                startActivityForResult(intent, REQ_PROFILE_IMAGE);
-
                 CropImage.activity()
                         .setGuidelines(CropImageView.Guidelines.ON)
                         .setFixAspectRatio(true)

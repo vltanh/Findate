@@ -41,7 +41,7 @@
                 android:src="@drawable/ic_plus"
                 app:tint="@color/white"
                 app:backgroundTint="@color/colorAccent"
-                android:visibility="invisible"/>
+                android:visibility="visible"/>
 
             <android.support.design.widget.FloatingActionButton
                 android:layout_width="wrap_content"
@@ -54,7 +54,7 @@
                 android:src="@drawable/ic_no"
                 app:tint="@color/white"
                 app:backgroundTint="@color/colorPrimary"
-                android:visibility="visible"/>
+                android:visibility="invisible"/>
 
         </RelativeLayout>
 
@@ -227,36 +227,6 @@
                 android:layout_height="match_parent"
                 android:id="@+id/ed_edit_info_school"
                 android:layout_below="@+id/tv_edit_info_school"
-                android:layout_margin="10dp"
-                android:padding="8dp"
-                android:background="@drawable/border_layout"
-                android:textSize="18dp"
-                android:maxLength="30"
-                android:textColor="@color/black"/>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginRight="10dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tv_edit_info_company"
-                android:text="@string/edit_info_company"
-                android:layout_marginLeft="10dp"
-                android:textColor="@color/colorAccent"
-                android:textStyle="bold"/>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/ed_edit_info_company"
-                android:layout_below="@+id/tv_edit_info_company"
                 android:layout_margin="10dp"
                 android:padding="8dp"
                 android:background="@drawable/border_layout"
