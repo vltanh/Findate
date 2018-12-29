@@ -6,6 +6,12 @@
         android:id="@+id/action_settings_btn"
         android:title="@string/menu_action_setting_text" />
     <item
+        android:id="@+id/action_login_btn"
+        android:title="@string/menu_action_login_text" />
+    <item
+        android:id="@+id/action_signup_btn"
+        android:title="@string/menu_action_signup_text" />
+    <item
         android:id="@+id/action_logout_btn"
         android:title="@string/menu_action_logout_text" />
 

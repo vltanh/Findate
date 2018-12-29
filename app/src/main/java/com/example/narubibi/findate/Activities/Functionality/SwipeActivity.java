@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.narubibi.findate.Activities.Authentication.ChooseLoginRegisterActivity;
 import com.example.narubibi.findate.Activities.Authentication.LoginActivity;
 import com.example.narubibi.findate.R;
 import com.example.narubibi.findate._Match.MatchesActivity;
@@ -41,7 +40,7 @@ public class SwipeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_swipe);
 
         usersDb = FirebaseDatabase.getInstance().getReference().child("Users");
         firebaseAuth = FirebaseAuth.getInstance();

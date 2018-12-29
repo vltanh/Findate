@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">Findate</string>
-
     <!-- Menu String -->
+    <string name="menu_action_login_text">Log in</string>
+    <string name="menu_action_signup_text">Sign up</string>
     <string name="menu_action_logout_text">Log out</string>
     <string name="menu_action_setting_text">Setting</string>
 
@@ -20,4 +20,44 @@
     <string name="yourname">Enter your name</string>
     <string name="gender">Your gender</string>
     <string name="btn_sign_up">Sign up</string>
+
+    <!-- bottom navigation -->
+    <string name="bottom_nav_profile">Profile</string>
+    <string name="bottom_nav_find">Find</string>
+    <string name="bottom_nav_message">Message</string>
+
+    <!-- profile -->
+    <string name="btn_profile_logout">Log Out</string>
+    <string name="btn_profile_deleteaccount">Delete Account</string>
+
+    <!-- Setting -->
+    <string name="setting_show_me">Show me</string>
+    <string name="setting_male">Male</string>
+    <string name="setting_female">Female</string>
+    <string name="setting_max_distance">Maximum Distance</string>
+    <string name="setting_number">50</string>
+    <string name="setting_mile">mi.</string>
+    <string name="setting_show_me_public">Show me on Findate</string>
+    <string name="setting_block_list">Block list</string>
+    <string name="setting_btn_set_block_set">SET</string>
+    <string name="setting_show_image_public">Show image on Findate</string>
+    <string name="setting_btn_set_image_public">SET</string>
+    <string name="setting_share_my_feed">Share my feed</string>
+    <string name="setting_btn_share">SHARE</string>
+
+    <!-- Edit Info -->
+    <string name="edit_info_about">About you</string>
+    <string name="edit_info_name">Your name</string>
+    <string name="edit_info_birth">Your birthday</string>
+    <string name="edit_info_phone">Phone number</string>
+    <string name="edit_info_job_title">Job title</string>
+    <string name="edit_info_company">Company</string>
+    <string name="edit_info_school">School</string>
+    <string name="btn_edit_info_update">Update</string>
+    <string name="btn_edit_info_cancel">Cancel</string>
+
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
