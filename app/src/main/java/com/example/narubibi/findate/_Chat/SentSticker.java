@@ -1,8 +1,8 @@
 package com.example.narubibi.findate._Chat;
 
 public class SentSticker extends Message {
-    public SentSticker(String sentUserId, String message, String sentTime) {
-        super(sentUserId, message, sentTime);
+    public SentSticker(String chatId, String sentUserId, String message, String sentTime) {
+        super(chatId, sentUserId, message, sentTime);
     }
 
     @Override

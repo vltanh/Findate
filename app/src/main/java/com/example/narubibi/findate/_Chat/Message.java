@@ -5,9 +5,10 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 public class Message {
-    private String userId, message, timestamp;
+    private String chatId, userId, message, timestamp;
 
-    public Message(String sentUserId, String message, String sentTime) {
+    public Message(String chatId, String sentUserId, String message, String sentTime) {
+        this.chatId = chatId;
         this.userId = sentUserId;
         this.message = message;
         this.timestamp = sentTime;
@@ -46,5 +47,13 @@ public class Message {
 
     public int getMessageType() {
         return 1;
+    }
+
+    public String getChatId() {
+        return chatId;
+    }
+
+    public void setChatId(String chatId) {
+        this.chatId = chatId;
     }
 }

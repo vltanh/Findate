@@ -85,7 +85,7 @@ public class SettingsActivity extends AppCompatActivity {
                         .setGuidelines(CropImageView.Guidelines.ON)
                         .setFixAspectRatio(true)
                         .setAspectRatio(1, 1)
-                        .setMinCropWindowSize(250, 250)
+                        .setMinCropWindowSize(300, 300)
                         .start(SettingsActivity.this);
             }
         });

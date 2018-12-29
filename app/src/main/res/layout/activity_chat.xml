@@ -52,7 +52,19 @@
 
         <Button
             android:id="@+id/button_chatbox_sticker"
-            android:text="QOOBEE"
+            android:text="Sticker"
+            android:textSize="14dp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:layout_width="64dp"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:layout_gravity="bottom"
+            />
+
+        <Button
+            android:id="@+id/button_chatbox_invite"
+            android:text="Invite"
             android:textSize="14dp"
             android:background="?attr/selectableItemBackground"
             android:clickable="true"

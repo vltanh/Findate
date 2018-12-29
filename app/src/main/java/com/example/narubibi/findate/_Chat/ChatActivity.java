@@ -34,7 +34,7 @@ public class ChatActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
 
     private EditText textMessage;
-    private Button btnSendMessage, btnSendSticker;
+    private Button btnSendMessage, btnSendSticker, btnSendInvitation;
 
     private ArrayList<Message> listMessages = new ArrayList<>();
 
@@ -76,6 +76,7 @@ public class ChatActivity extends AppCompatActivity {
         textMessage = findViewById(R.id.edittext_chatbox);
         btnSendMessage = findViewById(R.id.button_chatbox_send);
         btnSendSticker = findViewById(R.id.button_chatbox_sticker);
+        btnSendInvitation = findViewById(R.id.button_chatbox_invite);
 
         btnSendMessage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,6 +90,32 @@ public class ChatActivity extends AppCompatActivity {
                 sendSticker();
             }
         });
+        btnSendInvitation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendInvitation();
+            }
+        });
+    }
+
+    private void sendInvitation() {
+        String message = "Would love to see you!";
+        String date = "23:00 December 24th";
+        String place = "Hotel Nikko";
+        String status = "waiting";
+        if (!message.isEmpty() && !date.isEmpty() && !place.isEmpty() && !status.isEmpty()) {
+            DatabaseReference newMessageDb = chatDb.push();
+            Map<String, Object> newMessage = new HashMap<>();
+            newMessage.put("sent_id", sentId);
+            newMessage.put("timestamp", dateFormat.format(Calendar.getInstance().getTime()));
+            newMessage.put("content", message);
+            newMessage.put("date", date);
+            newMessage.put("place", place);
+            newMessage.put("status", status);
+            newMessage.put("type", "invitation");
+            newMessageDb.setValue(newMessage);
+        }
+        textMessage.setText(null);
     }
 
     private void sendSticker() {
@@ -160,21 +187,38 @@ public class ChatActivity extends AppCompatActivity {
                         if (currentUser) {
                             if (dataSnapshot.child("type").getValue() != null) {
                                 if (dataSnapshot.child("type").getValue().equals("sticker")) {
-                                    listMessages.add(0, new SentSticker(sentUserId, message, sentTime));
+                                    listMessages.add(0, new SentSticker(chatId, sentUserId, message, sentTime));
                                 }
                             }
                             else {
-                                listMessages.add(0, new Message(sentUserId, message, sentTime));
+                                listMessages.add(0, new Message(chatId, sentUserId, message, sentTime));
                             }
                         }
                         else {
                             if (dataSnapshot.child("type").getValue() != null) {
                                 if (dataSnapshot.child("type").getValue().equals("sticker")) {
-                                    listMessages.add(0, new ReceivedSticker(sentUserId, receivedName, receivedImgUrl, message, sentTime));
+                                    listMessages.add(0, new ReceivedSticker(chatId, sentUserId, receivedName, receivedImgUrl, message, sentTime));
+                                } else if (dataSnapshot.child("type").getValue().equals("invitation")) {
+                                    String time = null;
+                                    String place = null;
+                                    String status = null;
+
+                                    if (dataSnapshot.child("date").getValue() != null) {
+                                        time = dataSnapshot.child("date").getValue().toString();
+                                    }
+                                    if (dataSnapshot.child("place").getValue() != null) {
+                                        place = dataSnapshot.child("place").getValue().toString();
+                                    }
+                                    if (dataSnapshot.child("status").getValue() != null) {
+                                        status = dataSnapshot.child("status").getValue().toString();
+                                    }
+
+                                    if (time != null && place != null && status != null)
+                                        listMessages.add(0, new ReceivedInvitation(chatId, dataSnapshot.getKey(), sentUserId, receivedName, receivedImgUrl, message, sentTime, time, place, status));
                                 }
                             }
                             else {
-                                listMessages.add(0, new ReceivedMessage(sentUserId, receivedName, receivedImgUrl, message, sentTime));
+                                listMessages.add(0, new ReceivedMessage(chatId, sentUserId, receivedName, receivedImgUrl, message, sentTime));
                             }
                         }
                         messageAdapter.notifyDataSetChanged();

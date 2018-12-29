@@ -4,8 +4,8 @@ public class ReceivedMessage extends Message {
     private String userName;
     private String profileImageUrl;
 
-    public ReceivedMessage(String sentUserId, String userName, String profileImageUrl, String message, String sentTime) {
-        super(sentUserId, message, sentTime);
+    public ReceivedMessage(String chatId, String sentUserId, String userName, String profileImageUrl, String message, String sentTime) {
+        super(chatId, sentUserId, message, sentTime);
         this.userName = userName;
         this.profileImageUrl = profileImageUrl;
     }
