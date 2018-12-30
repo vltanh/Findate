@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.narubibi.findate.Activities.Functionality.SwipeActivity;
 import com.example.narubibi.findate.R;
 import com.example.narubibi.findate._User.User;
 import com.example.narubibi.findate._User.UserAdapter;

@@ -61,19 +61,12 @@ public class MessageFragment extends Fragment {
 
             }
 
-            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 filterMatches.clear();
-                for (Match match : listMatches
-                                    .stream()
-                                    .filter(p ->
-                                                    p.getUserName()
-                                                            .toLowerCase()
-                                                            .contains(editTextSearch.getText().toString().toLowerCase())
-                                            )
-                                    .collect(Collectors.toList())) {
-                    filterMatches.add(match);
+                for (Match match : listMatches) {
+                    if (match.getUserName().toLowerCase().contains(editTextSearch.getText().toString().toLowerCase()))
+                        filterMatches.add(match);
                 }
                 matchAdapter.notifyDataSetChanged();
             }

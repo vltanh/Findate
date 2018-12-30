@@ -12,10 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.RadioButton;
 import android.widget.Toast;
 
-import com.example.narubibi.findate.Activities.Functionality.SwipeActivity;
 import com.example.narubibi.findate.Activities.MainActivity;
 import com.example.narubibi.findate.R;
 import com.google.android.gms.tasks.OnCompleteListener;

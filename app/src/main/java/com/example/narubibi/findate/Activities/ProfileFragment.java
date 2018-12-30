@@ -13,22 +13,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.narubibi.findate.Activities.Authentication.LoginActivity;
-import com.example.narubibi.findate.Activities.Functionality.SettingsActivity;
-import com.example.narubibi.findate.Activities.Functionality.SwipeActivity;
 import com.example.narubibi.findate.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -118,21 +114,45 @@ public class ProfileFragment extends Fragment {
     }
 
     private void getUserInfo() {
-        userDb.addListenerForSingleValueEvent(new ValueEventListener() {
+        userDb.addChildEventListener(new ChildEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (getContext() != null && dataSnapshot.exists() && dataSnapshot.getChildrenCount() > 0) {
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                if (dataSnapshot.exists()) {
                     Map<String, Object> map = (Map<String, Object>) dataSnapshot.getValue();
-                    if (map.get("name") != null) {
-                        userName = map.get("name").toString();
+                    if (dataSnapshot.getKey().equals("name")) {
+                        userName = dataSnapshot.getValue().toString();
                         textViewName.setText(userName);
                     }
-                    if (map.get("profile_image_url") != null) {
-                        profileImageUrl = map.get("profile_image_url").toString();
+                    if (dataSnapshot.getKey().equals("profile_image_url")) {
+                        profileImageUrl = dataSnapshot.getValue().toString();
                         Glide.with(getContext()).load(profileImageUrl).into(imageViewProfilePicture);
                     }
-                    getUserInfo();
                 }
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                if (dataSnapshot.exists()) {
+                    Map<String, Object> map = (Map<String, Object>) dataSnapshot.getValue();
+                    if (dataSnapshot.getKey().equals("name")) {
+                        userName = dataSnapshot.getValue().toString();
+                        textViewName.setText(userName);
+                    }
+                    if (dataSnapshot.getKey().equals("profile_image_url")) {
+                        profileImageUrl = dataSnapshot.getValue().toString();
+                        Glide.with(getContext()).load(profileImageUrl).into(imageViewProfilePicture);
+                    }
+                }
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
             }
 
             @Override
@@ -149,7 +169,7 @@ public class ProfileFragment extends Fragment {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
                 resultUri = result.getUri();
-                imageViewProfilePicture.setImageURI(resultUri);
+                //imageViewProfilePicture.setImageURI(resultUri);
                 saveUserInformation();
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Exception error = result.getError();

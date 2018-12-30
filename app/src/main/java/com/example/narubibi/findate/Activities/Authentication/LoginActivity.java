@@ -15,7 +15,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.narubibi.findate.Activities.Functionality.SwipeActivity;
 import com.example.narubibi.findate.Activities.MainActivity;
 import com.example.narubibi.findate.R;
 import com.google.android.gms.tasks.OnCompleteListener;
