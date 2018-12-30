@@ -149,7 +149,6 @@ public class ProfileFragment extends Fragment {
             if (resultCode == RESULT_OK) {
                 resultUri = result.getUri();
                 imageViewProfilePicture.setImageURI(resultUri);
-                Toast.makeText(getContext(), resultUri.toString(), Toast.LENGTH_LONG).show();
                 saveUserInformation();
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Exception error = result.getError();

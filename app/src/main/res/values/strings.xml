@@ -6,14 +6,12 @@
     <string name="menu_action_setting_text">Setting</string>
 
     <!-- Log in -->
-    <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
     <string name="btn_login">Log in</string>
     <string name="btn_forgot_password">Forgot your password?</string>
     <string name="btn_signup">Not a member? Sign up now!</string>
 
     <!-- Sign up -->
-    <string name="username">Enter your username</string>
     <string name="email">Enter your email</string>
     <string name="password">Enter your password</string>
     <string name="repassword">Confirm your password</string>
@@ -35,7 +33,6 @@
     <string name="setting_male">Male</string>
     <string name="setting_female">Female</string>
     <string name="setting_age">Age</string>
-    <string name="setting_max_distance">Maximum Distance</string>
     <string name="setting_min_age">13</string>
     <string name="setting_max_age">60</string>
     <string name="setting_show_me_public">Show me on Findate</string>
@@ -52,7 +49,6 @@
     <string name="edit_info_birth">Your birthday</string>
     <string name="edit_info_phone">Phone number</string>
     <string name="edit_info_job_title">Job title</string>
-    <string name="edit_info_company">Company</string>
     <string name="edit_info_school">School/Company</string>
     <string name="btn_edit_info_update">Update</string>
     <string name="btn_edit_info_cancel">Cancel</string>

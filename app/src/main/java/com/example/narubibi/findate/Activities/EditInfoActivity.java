@@ -20,7 +20,9 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.narubibi.findate.R;
@@ -60,6 +62,7 @@ public class EditInfoActivity extends AppCompatActivity {
     private EditText editTextName, editTextPhone, editTextAboutYou, editTextJob, editTextSchoolCompany;
     private Button btnConfirm, btnBack;
     private FloatingActionButton btnAddImage;
+    private ProgressBar progressBar;
 
     private FirebaseAuth firebaseAuth;
     private DatabaseReference userDb;
@@ -88,6 +91,9 @@ public class EditInfoActivity extends AppCompatActivity {
                     int year = cal.get(Calendar.YEAR);
                     int month = cal.get(Calendar.MONTH);
                     int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                    String date = (month + 1) + "/" + month + "/" + year;
+                    edBirth.setText(date);
 
                     datePickerDialog = new DatePickerDialog(
                             EditInfoActivity.this,
@@ -120,6 +126,8 @@ public class EditInfoActivity extends AppCompatActivity {
         btnConfirm = findViewById(R.id.btn_edit_info_update);
         btnBack = findViewById(R.id.btn_edit_info_cancel);
         btnAddImage = findViewById(R.id.btn_plus_image);
+
+        progressBar = findViewById(R.id.sign_progress);
 
         firebaseAuth = FirebaseAuth.getInstance();
         userId = firebaseAuth.getCurrentUser().getUid();
@@ -165,19 +173,21 @@ public class EditInfoActivity extends AppCompatActivity {
                     }
                     if (map.get("birthday") != null) {
                         birthday = map.get("birthday").toString();
-                        edBirth.setText(birthday);
+                        if (!birthday.isEmpty()) {
+                            edBirth.setText(birthday);
 
-                        String[] dateArray = birthday.split("/");
+                            String[] dateArray = birthday.split("/");
 
-                        int year = Integer.parseInt(dateArray[2]);
-                        int month = Integer.parseInt(dateArray[0]);
-                        int date = Integer.parseInt(dateArray[1]);
+                            int year = Integer.parseInt(dateArray[2]);
+                            int month = Integer.parseInt(dateArray[0]);
+                            int date = Integer.parseInt(dateArray[1]);
 
-                        datePickerDialog = new DatePickerDialog(
-                                EditInfoActivity.this,
-                                AlertDialog.THEME_HOLO_DARK,
-                                dateSetListener,
-                                year, month - 1, date);
+                            datePickerDialog = new DatePickerDialog(
+                                    EditInfoActivity.this,
+                                    AlertDialog.THEME_HOLO_DARK,
+                                    dateSetListener,
+                                    year, month - 1, date);
+                        }
                     }
                     if (map.get("phone") != null) {
                         phone = map.get("phone").toString();
@@ -210,6 +220,10 @@ public class EditInfoActivity extends AppCompatActivity {
     }
 
     private void saveUserInformation() {
+        progressBar.setVisibility(View.VISIBLE);
+        btnConfirm.setClickable(false);
+        btnBack.setClickable(false);
+
         name = editTextName.getText().toString();
         birthday = edBirth.getText().toString();
         phone = editTextPhone.getText().toString();
@@ -227,7 +241,7 @@ public class EditInfoActivity extends AppCompatActivity {
         userDb.updateChildren(userInfo);
 
         if (resultUri != null) {
-            final StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("ProfileImages").child(userId);
+            final StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("SwipeImages").child(userId);
             Bitmap bitmap = null;
 
             try {
@@ -280,6 +294,7 @@ public class EditInfoActivity extends AppCompatActivity {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
                 resultUri = result.getUri();
+//                Toast.makeText(EditInfoActivity.this, resultUri.toString(), Toast.LENGTH_LONG).show();
                 imageViewSwipeImage.setImageURI(resultUri);
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Exception error = result.getError();

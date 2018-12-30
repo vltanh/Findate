@@ -7,191 +7,175 @@
     android:layout_height="match_parent"
     tools:context=".Activities.Authentication.RegisterActivity"
     android:id="@+id/linearLayout_signup"
-    android:background="@drawable/animation_list"
-    >
+    android:background="@drawable/animation_list">
 
-    <RelativeLayout
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginHorizontal="20dp"
-        android:layout_gravity="center_vertical">
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textlayout_signup_username"
-            android:layout_marginTop="16dp"
-            android:textColorHint="@color/white"
-            android:layout_marginBottom="@dimen/fab_margin">
-
-            <EditText
-                android:id="@+id/ed_signup_username"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:theme="@style/MyEditTextStyle"
-                android:hint="@string/username"
-                android:inputType="textFilter|textEmailAddress"
-                android:maxLength="30"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:textColor="@color/white"/>
-
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textlayout_signup_email"
-            android:layout_below="@+id/textlayout_signup_username"
-            android:textColorHint="@color/white"
-            android:layout_marginBottom="@dimen/fab_margin">
-
-            <EditText
-                android:id="@+id/ed_signup_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:theme="@style/MyEditTextStyle"
-                android:hint="@string/email"
-                android:inputType="textEmailAddress"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:textColor="@color/white"/>
-
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textLayout_signup_password"
-            android:textColorHint="@color/white"
-            android:layout_below="@+id/textlayout_signup_email"
-            app:passwordToggleEnabled="true"
-            app:passwordToggleDrawable="@drawable/ic_eye"
-            android:layout_marginBottom="@dimen/fab_margin">
-
-            <EditText
-                android:id="@+id/ed_signup_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:theme="@style/MyEditTextStyle"
-                android:focusableInTouchMode="true"
-                android:hint="@string/hint_password"
-                android:imeOptions="actionUnspecified"
-                android:inputType="textPassword"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:textColor="@color/white" />
-
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textLayout_signup_repassword"
-            android:layout_below="@+id/textLayout_signup_password"
-            android:textColorHint="@color/white"
-            app:passwordToggleEnabled="true"
-            app:passwordToggleDrawable="@drawable/ic_eye"
-            android:layout_marginBottom="@dimen/fab_margin">
-
-            <EditText
-                android:id="@+id/ed_signup_confirm_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:theme="@style/MyEditTextStyle"
-                android:focusableInTouchMode="true"
-                android:hint="@string/repassword"
-                android:imeOptions="actionUnspecified"
-                android:inputType="textPassword"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:textColor="@color/white"
-                android:backgroundTint="@color/white"/>
-
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textLayout_signup_name"
-            android:layout_below="@+id/textLayout_signup_repassword"
-            android:textColorHint="@color/white"
-            android:layout_marginBottom="@dimen/fab_margin">
-
-            <EditText
-                android:id="@+id/ed_signup_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:focusableInTouchMode="true"
-                android:theme="@style/MyEditTextStyle"
-                android:hint="@string/yourname"
-                android:imeOptions="actionUnspecified"
-                android:inputType="textPersonName"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:textColor="@color/white"
-                android:backgroundTint="@color/white"/>
-
-        </android.support.design.widget.TextInputLayout>
-
-
-        <TextView
-            android:id="@+id/tv_gender"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textLayout_signup_name"
-            android:layout_marginStart="3dp"
-            android:text="@string/gender"
-            android:textColor="@color/white"
-            android:textSize="18dp"
-            android:layout_marginTop="15dp"/>
-
-        <com.polyak.iconswitch.IconSwitch
-            android:id="@+id/icon_switch_gender"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textLayout_signup_name"
-            app:isw_icon_left="@drawable/ic_female"
-            app:isw_icon_right="@drawable/ic_male"
-            app:isw_inactive_tint_icon_left="@color/pico_8_pink"
-            app:isw_inactive_tint_icon_right="@color/green_darner_tail"
-            app:isw_active_tint_icon_left="@color/white"
-            app:isw_active_tint_icon_right="@color/white"
-            app:isw_thumb_color_left="@color/prunus_avium"
-            app:isw_thumb_color_right="@color/electron_blue"
-            app:isw_background_color="@color/white"
-            android:layout_toRightOf="@+id/tv_gender"
-            android:layout_marginLeft="150dp"
-            android:layout_marginTop="15dp"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_gender"
-            android:orientation="horizontal"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
             android:layout_marginTop="30dp">
 
-            <com.example.narubibi.findate.View.MyButton
-                android:layout_weight="5"
-                android:id="@+id/btn_signup"
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/btn_sign_up"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
+                android:id="@+id/textlayout_signup_email"
+                android:layout_marginTop="22dp"
+                android:textColorHint="@color/white"
+                android:layout_marginBottom="@dimen/fab_margin">
 
-            <ProgressBar
-                android:layout_weight="1"
-                android:id="@+id/sign_progress"
+                <EditText
+                    android:id="@+id/ed_signup_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/MyEditTextStyle"
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="@color/white"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textLayout_signup_password"
+                android:textColorHint="@color/white"
+                android:layout_below="@+id/textlayout_signup_email"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleDrawable="@drawable/ic_eye"
+                android:layout_marginBottom="@dimen/fab_margin">
+
+                <EditText
+                    android:id="@+id/ed_signup_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/MyEditTextStyle"
+                    android:focusableInTouchMode="true"
+                    android:hint="@string/hint_password"
+                    android:imeOptions="actionUnspecified"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="@color/white"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textLayout_signup_repassword"
+                android:layout_below="@+id/textLayout_signup_password"
+                android:textColorHint="@color/white"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleDrawable="@drawable/ic_eye"
+                android:layout_marginBottom="@dimen/fab_margin">
+
+                <EditText
+                    android:id="@+id/ed_signup_confirm_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/MyEditTextStyle"
+                    android:focusableInTouchMode="true"
+                    android:hint="@string/repassword"
+                    android:imeOptions="actionUnspecified"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/white"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textLayout_signup_name"
+                android:layout_below="@+id/textLayout_signup_repassword"
+                android:textColorHint="@color/white"
+                android:layout_marginBottom="@dimen/fab_margin">
+
+                <EditText
+                    android:id="@+id/ed_signup_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusableInTouchMode="true"
+                    android:theme="@style/MyEditTextStyle"
+                    android:hint="@string/yourname"
+                    android:imeOptions="actionUnspecified"
+                    android:inputType="textPersonName"
+                    android:maxLength="30"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/white"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <TextView
+                android:id="@+id/tv_gender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:indeterminateDrawable="@drawable/progressbar_icon"
-                android:visibility="invisible"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"/>
-        </LinearLayout>
+                android:layout_below="@+id/textLayout_signup_name"
+                android:layout_marginStart="3dp"
+                android:text="@string/gender"
+                android:textColor="@color/white"
+                android:textSize="18dp"
+                android:layout_marginTop="10dp"/>
 
-    </RelativeLayout>
+            <com.polyak.iconswitch.IconSwitch
+                android:id="@+id/icon_switch_gender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textLayout_signup_name"
+                app:isw_icon_left="@drawable/ic_female"
+                app:isw_icon_right="@drawable/ic_male"
+                app:isw_inactive_tint_icon_left="@color/pico_8_pink"
+                app:isw_inactive_tint_icon_right="@color/green_darner_tail"
+                app:isw_active_tint_icon_left="@color/white"
+                app:isw_active_tint_icon_right="@color/white"
+                app:isw_thumb_color_left="@color/prunus_avium"
+                app:isw_thumb_color_right="@color/electron_blue"
+                app:isw_background_color="@color/white"
+                android:layout_toRightOf="@+id/tv_gender"
+                android:layout_marginLeft="150dp"
+                android:layout_marginTop="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_gender"
+                android:orientation="horizontal"
+                android:layout_marginTop="30dp">
+
+                <com.example.narubibi.findate.View.MyButton
+                    android:layout_weight="5"
+                    android:id="@+id/btn_signup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_sign_up"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <ProgressBar
+                    android:layout_weight="1"
+                    android:id="@+id/sign_progress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:indeterminateDrawable="@drawable/progressbar_icon"
+                    android:visibility="invisible"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"/>
+            </LinearLayout>
+
+
+        </RelativeLayout>
+    </android.support.v4.widget.NestedScrollView>
 
 </LinearLayout>

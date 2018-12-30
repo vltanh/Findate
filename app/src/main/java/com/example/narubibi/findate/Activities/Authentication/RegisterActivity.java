@@ -16,6 +16,7 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.example.narubibi.findate.Activities.Functionality.SwipeActivity;
+import com.example.narubibi.findate.Activities.MainActivity;
 import com.example.narubibi.findate.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -51,10 +52,10 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        progressBar = (ProgressBar)findViewById(R.id.sign_progress);
+        progressBar = findViewById(R.id.sign_progress);
 
         assetManager = this.getApplicationContext().getAssets();
-        LinearLayout container = (LinearLayout) findViewById(R.id.linearLayout_signup);
+        LinearLayout container = findViewById(R.id.linearLayout_signup);
         animationDrawable = (AnimationDrawable) container.getBackground();
         animationDrawable.setEnterFadeDuration(100);
         animationDrawable.setExitFadeDuration(1000);
@@ -65,7 +66,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 if (user != null) {
-                    Intent intent = new Intent(RegisterActivity.this, SwipeActivity.class);
+                    Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish();
                     return;
@@ -99,7 +100,6 @@ public class RegisterActivity extends AppCompatActivity {
                             .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
-                                    progressBar.setVisibility(ProgressBar.GONE);
                                     if (!task.isSuccessful()) {
                                         Toast.makeText(RegisterActivity.this, "Error! Can't register!", Toast.LENGTH_SHORT).show();
                                     } else {
@@ -113,8 +113,22 @@ public class RegisterActivity extends AppCompatActivity {
                                         userInfo.put("name", name);
                                         userInfo.put("sex", sex);
                                         userInfo.put("sex_preference", preference);
+
                                         userInfo.put("profile_image_url", DEFAULT_PROFILE_IMAGE_URL);
+                                        userInfo.put("swipe_image_url", DEFAULT_PROFILE_IMAGE_URL);
+
+                                        userInfo.put("birthday", "1/1/2000");
+                                        userInfo.put("phone", "");
+                                        userInfo.put("job", "");
+                                        userInfo.put("workplace", "");
+
+                                        userInfo.put("visibility", true);
+                                        userInfo.put("age_min", 13);
+                                        userInfo.put("age_max", 60);
+
                                         currentUserDB.updateChildren(userInfo);
+
+                                        progressBar.setVisibility(ProgressBar.INVISIBLE);
                                     }
                                 }
                             });
@@ -125,11 +139,6 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    @NonNull
-    private String getUserSex(RadioButton selectedRadioBtn) {
-        return selectedRadioBtn.getText().toString();
     }
 
     @Override
