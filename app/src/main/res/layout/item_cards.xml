@@ -21,23 +21,22 @@
         android:id="@+id/cardView">
 
         <LinearLayout
-            android:layout_width="300dp"
-            android:layout_height="350dp"
+            android:layout_width="250dp"
+            android:layout_height="300dp"
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="300dp"
-                android:layout_height="300dp"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
                 android:id="@+id/user_image"
                 android:src="@drawable/ic_female"
                 android:scaleType="centerCrop"/>
 
             <TextView
                 android:id="@+id/user_name"
-                android:paddingLeft="20sp"
-                android:textSize="30sp"
+                android:textSize="20sp"
                 android:textColor="@android:color/black"
-                android:gravity="center|left"
+                android:gravity="center"
                 tools:text="Hello World!"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />

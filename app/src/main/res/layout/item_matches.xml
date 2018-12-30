@@ -3,14 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:padding="20sp">
-    
-    <ImageView
+    android:padding="5sp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="50sp"
         android:layout_height="50sp"
-        android:src="@mipmap/ic_launcher"
-        android:id="@+id/match_profile_image"
-        />
+        android:id="@+id/iv_match_user_image"
+        android:src="@drawable/profile" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,14 +21,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Match's Name"
-            android:id="@+id/match_username"/>
+            android:id="@+id/match_username"
+            android:textSize="18sp"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Match's ID"
-            android:textSize="10sp"
+            android:text="You've just been connected! Maybe say hi for starters?"
+            android:textSize="12sp"
             android:textColor="@android:color/darker_gray"
-            android:id="@+id/match_userid"/>
+            android:id="@+id/match_userid"
+            android:maxLines="1"
+            android:layout_marginTop="2dp"/>
     </LinearLayout>
 
 

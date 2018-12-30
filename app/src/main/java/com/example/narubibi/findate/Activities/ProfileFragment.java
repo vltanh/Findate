@@ -121,7 +121,7 @@ public class ProfileFragment extends Fragment {
         userDb.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists() && dataSnapshot.getChildrenCount() > 0) {
+                if (getContext() != null && dataSnapshot.exists() && dataSnapshot.getChildrenCount() > 0) {
                     Map<String, Object> map = (Map<String, Object>) dataSnapshot.getValue();
                     if (map.get("name") != null) {
                         userName = map.get("name").toString();
@@ -129,8 +129,9 @@ public class ProfileFragment extends Fragment {
                     }
                     if (map.get("profile_image_url") != null) {
                         profileImageUrl = map.get("profile_image_url").toString();
-                        Glide.with(imageViewProfilePicture.getContext()).load(profileImageUrl).into(imageViewProfilePicture);
+                        Glide.with(getContext()).load(profileImageUrl).into(imageViewProfilePicture);
                     }
+                    getUserInfo();
                 }
             }
 

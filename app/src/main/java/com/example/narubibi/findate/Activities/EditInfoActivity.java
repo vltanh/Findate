@@ -221,8 +221,8 @@ public class EditInfoActivity extends AppCompatActivity {
 
     private void saveUserInformation() {
         progressBar.setVisibility(View.VISIBLE);
-        btnConfirm.setClickable(false);
-        btnBack.setClickable(false);
+        btnConfirm.setEnabled(false);
+        btnBack.setEnabled(false);
 
         name = editTextName.getText().toString();
         birthday = edBirth.getText().toString();
