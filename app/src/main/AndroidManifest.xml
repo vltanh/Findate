@@ -29,7 +29,9 @@
 
         <activity android:name=".Activities.MainActivity" android:windowSoftInputMode="stateAlwaysHidden|adjustPan|adjustResize">
         </activity>
-        <activity android:name=".Activities.SettingActivity"/>
+        <activity android:name=".Activities.SettingActivity"
+            android:screenOrientation="portrait"
+            />
 
         <activity android:name=".Activities.EditInfoActivity"
             android:screenOrientation="portrait">

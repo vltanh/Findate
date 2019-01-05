@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.example.narubibi.findate.R;
@@ -169,5 +170,15 @@ public class SettingActivity extends AppCompatActivity {
         Map<String, Object> userInfo = new HashMap<>();
         userInfo.put("sex_preference", preference);
         userDb.updateChildren(userInfo);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return true;
     }
 }
