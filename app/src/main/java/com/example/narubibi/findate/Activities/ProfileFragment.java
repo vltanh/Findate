@@ -132,7 +132,7 @@ public class ProfileFragment extends Fragment {
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                if (dataSnapshot.exists()) {
+                if (getContext() != null && dataSnapshot.exists()) {
                     Map<String, Object> map = (Map<String, Object>) dataSnapshot.getValue();
                     if (dataSnapshot.getKey().equals("name")) {
                         userName = dataSnapshot.getValue().toString();

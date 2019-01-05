@@ -1,5 +1,7 @@
 package com.example.narubibi.findate.Activities;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -7,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
@@ -33,7 +36,6 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public class MessageFragment extends Fragment {
-
     private EditText editTextSearch;
 
     private RecyclerView recyclerView;
@@ -141,6 +143,7 @@ public class MessageFragment extends Fragment {
 
                     Match match = new Match(matchId, matchName, matchProfileImageUrl);
                     listMatches.add(match);
+
                     if (match.getUserName().toLowerCase().contains(editTextSearch.getText().toString().toLowerCase()))
                         filterMatches.add(match);
                     matchAdapter.notifyDataSetChanged();
