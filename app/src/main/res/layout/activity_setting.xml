@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.Functionality.SettingsActivity">
+    tools:context=".Activities.SettingActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -78,7 +78,7 @@
                 app:isw_background_color="@color/black"
                 android:layout_toRightOf="@+id/tv_gender"
                 android:layout_marginLeft="150dp"
-                app:isw_default_selection="right"/>
+                app:isw_default_selection="left"/>
 
             <com.polyak.iconswitch.IconSwitch
                 android:id="@+id/icon_switch_female"

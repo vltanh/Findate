@@ -50,40 +50,42 @@
             android:layout_height="wrap_content"
             android:maxLines="6"/>
 
-        <Button
+        <ImageButton
             android:id="@+id/button_chatbox_sticker"
-            android:text="Sticker"
+            android:src="@drawable/ic_emotion"
             android:textSize="14dp"
             android:background="?attr/selectableItemBackground"
             android:clickable="true"
-            android:layout_width="64dp"
+            android:layout_width="40dp"
             android:layout_height="48dp"
             android:gravity="center"
             android:layout_gravity="bottom"
+
             />
 
-        <Button
+        <ImageButton
             android:id="@+id/button_chatbox_invite"
-            android:text="Invite"
             android:textSize="14dp"
             android:background="?attr/selectableItemBackground"
             android:clickable="true"
-            android:layout_width="64dp"
+            android:layout_width="40dp"
             android:layout_height="48dp"
             android:gravity="center"
             android:layout_gravity="bottom"
+            android:src="@drawable/ic_calendar"
             />
 
-        <Button
+        <ImageButton
             android:id="@+id/button_chatbox_send"
             android:text="SEND"
             android:textSize="14dp"
             android:background="?attr/selectableItemBackground"
             android:clickable="true"
-            android:layout_width="64dp"
+            android:layout_width="40dp"
             android:layout_height="48dp"
             android:gravity="center"
             android:layout_gravity="bottom"
+            android:src="@drawable/ic_send"
             />
 
     </LinearLayout>

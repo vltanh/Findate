@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activities.SetDateActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/set_date_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_set_date"
+            android:text="@string/set_date"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_set_date_show"
+            android:layout_below="@+id/tv_set_date"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:background="@drawable/border_layout"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_set_place"
+            android:text="@string/set_place"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/ed_set_place"
+            android:layout_below="@+id/tv_set_place"
+            android:layout_margin="10dp"
+            android:padding="8dp"
+            android:background="@drawable/border_layout"
+            android:textSize="18dp"
+            android:inputType="text"
+            android:textColor="@color/black"/>
+
+        <Button
+            android:id="@+id/btn_setMap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ed_set_place"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="-3dp"
+            android:layout_toRightOf="@+id/ed_set_place"
+            android:background="@color/colorAccent"
+            android:text="MAP"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_set_message"
+            android:text="@string/set_message"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ed_set_message"
+            android:layout_below="@+id/tv_set_message"
+            android:layout_margin="10dp"
+            android:padding="8dp"
+            android:background="@drawable/border_layout"
+            android:textSize="18dp"
+            android:inputType="text"
+            android:textColor="@color/black"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btn_invite_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="-3dp"
+            android:background="@color/colorAccent"
+            android:text="OK"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btn_invite_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/btn_invite_ok"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="-3dp"
+            android:background="@color/colorAccent"
+            android:text="Cancel"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
+
+</LinearLayout>

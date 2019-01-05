@@ -13,7 +13,7 @@
         android:roundIcon="@drawable/progressbar_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.Authentication.ChooseLoginRegisterActivity"></activity>
+        <activity android:name=".Activities.Authentication.ChooseLoginRegisterActivity" />
         <activity android:name=".Activities.Authentication.RegisterActivity" />
         <activity android:name=".Activities.Authentication.LoginActivity">
             <intent-filter>
@@ -23,20 +23,21 @@
             </intent-filter>
         </activity>
         <activity android:name="._Match.MatchesActivity" />
-        <activity android:name="._Chat.ChatActivity"></activity>
-        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
-            android:theme="@style/Base.Theme.AppCompat"/> <!-- optional (needed if default theme has no action bar) -->
+        <activity android:name="._Chat.ChatActivity" />
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" /> <!-- optional (needed if default theme has no action bar) -->
 
-        <activity android:name=".Activities.MainActivity" android:windowSoftInputMode="stateAlwaysHidden|adjustPan|adjustResize">
-        </activity>
-        <activity android:name=".Activities.SettingActivity"
-            android:screenOrientation="portrait"
-            />
-
-        <activity android:name=".Activities.EditInfoActivity"
-            android:screenOrientation="portrait">
-        </activity>
-
+        <activity
+            android:name=".Activities.MainActivity"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan|adjustResize"></activity>
+        <activity
+            android:name=".Activities.SettingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.EditInfoActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".Activities.SetDateActivity"></activity>
     </application>
 
 </manifest>

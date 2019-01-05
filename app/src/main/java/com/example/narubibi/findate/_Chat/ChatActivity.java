@@ -1,5 +1,7 @@
 package com.example.narubibi.findate._Chat;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -9,7 +11,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
+import com.example.narubibi.findate.Activities.SetDateActivity;
 import com.example.narubibi.findate.R;
 import com.example.narubibi.findate._Chat.ViewHolder.MessageAdapter;
 import com.google.firebase.auth.FirebaseAuth;
@@ -35,7 +39,7 @@ public class ChatActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
 
     private EditText textMessage;
-    private Button btnSendMessage, btnSendSticker, btnSendInvitation;
+    private ImageButton btnSendMessage, btnSendSticker, btnSendInvitation;
 
     private ArrayList<Message> listMessages = new ArrayList<>();
 
@@ -47,6 +51,7 @@ public class ChatActivity extends AppCompatActivity {
     private String receivedImgUrl;
 
     private DatabaseReference userDb, chatDb;
+    private int REQ_INVITATION_DATA = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,7 +99,7 @@ public class ChatActivity extends AppCompatActivity {
         btnSendInvitation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sendInvitation();
+                getInvitation();
             }
         });
     }
@@ -119,8 +124,13 @@ public class ChatActivity extends AppCompatActivity {
         textMessage.setText(null);
     }
 
+    private void getInvitation() {
+        Intent intent = new Intent(ChatActivity.this, SetDateActivity.class);
+        startActivityForResult(intent, REQ_INVITATION_DATA);
+    }
+
     private void sendSticker() {
-        String message = "https://firebasestorage.googleapis.com/v0/b/findate.appspot.com/o/Stickers%2Fqoobee_001.gif?alt=media&token=2fbf0389-0ab9-4546-b370-9c5967a1b282";
+        String message = getSticker();
         if (!message.isEmpty()) {
             DatabaseReference newMessageDb = chatDb.push();
             Map<String, Object> newMessage = new HashMap<>();
@@ -131,6 +141,11 @@ public class ChatActivity extends AppCompatActivity {
             newMessageDb.setValue(newMessage);
         }
         textMessage.setText(null);
+    }
+
+    @NonNull
+    private String getSticker() {
+        return "https://firebasestorage.googleapis.com/v0/b/findate.appspot.com/o/Stickers%2Fqoobee_001.gif?alt=media&token=2fbf0389-0ab9-4546-b370-9c5967a1b282";
     }
 
     private void sendMessage() {
@@ -251,5 +266,33 @@ public class ChatActivity extends AppCompatActivity {
 
     private ArrayList<Message> getMessages() {
         return listMessages;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQ_INVITATION_DATA && resultCode == Activity.RESULT_OK) {
+            sendInvitation(data);
+        }
+    }
+
+    private void sendInvitation(@Nullable Intent data) {
+        String message = data.getStringExtra("message");
+        String date = data.getStringExtra("date");
+        String place = data.getStringExtra("place");
+        String status = "waiting";
+        if (!message.isEmpty() && !date.isEmpty() && !place.isEmpty() && !status.isEmpty()) {
+            DatabaseReference newMessageDb = chatDb.push();
+            Map<String, Object> newMessage = new HashMap<>();
+            newMessage.put("sent_id", sentId);
+            newMessage.put("timestamp", dateFormat.format(Calendar.getInstance().getTime()));
+            newMessage.put("content", message);
+            newMessage.put("date", date);
+            newMessage.put("place", place);
+            newMessage.put("status", status);
+            newMessage.put("type", "invitation");
+            newMessageDb.setValue(newMessage);
+        }
+        textMessage.setText(null);
     }
 }

@@ -137,8 +137,14 @@ public class SettingActivity extends AppCompatActivity {
                     Map<String, Object> map = (Map<String, Object>) dataSnapshot.getValue();
                     if (map.get("sex_preference") != null) {
                         preference = map.get("sex_preference").toString();
-                        femaleSwitch.setChecked(!preference.equals("Male") ? IconSwitch.Checked.RIGHT : IconSwitch.Checked.LEFT);
-                        maleSwitch.setChecked(!preference.equals("Female") ? IconSwitch.Checked.RIGHT : IconSwitch.Checked.LEFT);
+                        if (preference.equals("Male")) {
+                            maleSwitch.setChecked(IconSwitch.Checked.RIGHT);
+                        } else if (preference.equals("Female")) {
+                            femaleSwitch.setChecked(IconSwitch.Checked.RIGHT);
+                        } else {
+                            maleSwitch.setChecked(IconSwitch.Checked.RIGHT);
+                            femaleSwitch.setChecked(IconSwitch.Checked.RIGHT);
+                        }
                     }
                     if (map.get("visibility") != null) {
                         isShowingUser = (boolean)map.get("visibility");
