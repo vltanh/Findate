@@ -20,6 +20,18 @@
     <string name="yourname">Enter your name</string>
     <string name="gender">Your gender</string>
     <string name="btn_sign_up">Sign up</string>
+    <string name="pass_warning">Password must contains 8-20 characters, at least 1 uppercase,
+        1 digit, and 1 special character</string>
+
+    <!-- Verification -->
+    <string name="verification_title">Email Verification</string>
+    <string name="verification_mess_1">Registered successfully.</string>
+    <string name="verification_mess_2"> Please check your email for verification.</string>
+
+    <!-- Reset Password -->
+    <string name="reset_password_title">Reset Password</string>
+    <string name="reset_password_content">Please input your email to reset your account password</string>
+    <string name="reset_password_button">Reset Password</string>
 
     <!-- bottom navigation -->
     <string name="bottom_nav_profile">Profile</string>
@@ -59,10 +71,6 @@
     <string name="message_search">Search</string>
     <string name="message_title">Message</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="channel_name">Findate</string>
-    <string name="channel_description">Test notification</string>
 
     <!-- Set date -->
     <string name="set_date">Date</string>

@@ -5,6 +5,10 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +17,7 @@
         android:roundIcon="@drawable/progressbar_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.Authentication.ChooseLoginRegisterActivity" />
+
         <activity android:name=".Activities.Authentication.RegisterActivity" />
         <activity android:name=".Activities.Authentication.LoginActivity">
             <intent-filter>
@@ -30,14 +34,31 @@
 
         <activity
             android:name=".Activities.MainActivity"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustPan|adjustResize"></activity>
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan|adjustResize" />
         <activity
             android:name=".Activities.SettingActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activities.EditInfoActivity"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".Activities.SetDateActivity"></activity>
+            android:screenOrientation="portrait" />
+        <activity android:name=".Activities.SetDateActivity">
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBKDSTls1ImshE0Ws5dJTqKGOnOQHvhJ2E"/>
+
+
+        <activity android:name=".Activities.Authentication.VerificationActivity" />
+
+        <activity android:name=".Activities.Authentication.ResetPassActivity"
+            android:parentActivityName=".Activities.Authentication.LoginActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.Authentication.LoginActivity"/>
+
+        </activity>
     </application>
 
 </manifest>

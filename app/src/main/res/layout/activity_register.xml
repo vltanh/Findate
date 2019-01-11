@@ -9,15 +9,15 @@
     android:id="@+id/linearLayout_signup"
     android:background="@drawable/animation_list">
 
-    <android.support.v4.widget.NestedScrollView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp">
+
         <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginTop="30dp">
 
             <android.support.design.widget.TextInputLayout
@@ -26,7 +26,8 @@
                 android:id="@+id/textlayout_signup_email"
                 android:layout_marginTop="22dp"
                 android:textColorHint="@color/white"
-                android:layout_marginBottom="@dimen/fab_margin">
+                android:layout_marginBottom="@dimen/fab_margin"
+                app:errorEnabled="true">
 
                 <EditText
                     android:id="@+id/ed_signup_email"
@@ -48,8 +49,7 @@
                 android:textColorHint="@color/white"
                 android:layout_below="@+id/textlayout_signup_email"
                 app:passwordToggleEnabled="true"
-                app:passwordToggleDrawable="@drawable/ic_eye"
-                android:layout_marginBottom="@dimen/fab_margin">
+                app:passwordToggleDrawable="@drawable/ic_eye">
 
                 <EditText
                     android:id="@+id/ed_signup_password"
@@ -64,7 +64,9 @@
                     android:singleLine="true"
                     android:textColor="@color/white"/>
 
+
             </android.support.design.widget.TextInputLayout>
+
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -176,6 +178,6 @@
 
 
         </RelativeLayout>
-    </android.support.v4.widget.NestedScrollView>
+    </ScrollView>
 
 </LinearLayout>

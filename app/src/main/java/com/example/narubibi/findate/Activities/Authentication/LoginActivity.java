@@ -8,9 +8,11 @@ import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,8 +32,9 @@ public class LoginActivity extends AppCompatActivity {
     private Typeface typefaceLobster, typefaceArial;
     private TextView tvTitle;
 
-    private Button btnLogin, btnRegister;
+    private Button btnLogin, btnRegister, btnForgotPass;
     private EditText editTextEmail, editTextPassword;
+    private ProgressBar loginProgressBar;
 
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthStateListener;
@@ -69,23 +72,47 @@ public class LoginActivity extends AppCompatActivity {
             }
         };
 
+        loginProgressBar = (ProgressBar)findViewById(R.id.login_progress);
         btnLogin = findViewById(R.id.btn_login);
         btnRegister = findViewById(R.id.btn_signup);
+        btnForgotPass = findViewById(R.id.btn_forgotPass);
+
         editTextEmail = findViewById(R.id.ed_Email);
         editTextPassword = findViewById(R.id.ed_Password);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String email = editTextEmail.getText().toString();
-                final String password = editTextPassword.getText().toString();
+                String email = editTextEmail.getText().toString();
+                String password = editTextPassword.getText().toString();
+
+                if(TextUtils.isEmpty(email)){
+                    Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(password)) {
+                    Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                loginProgressBar.setVisibility(View.VISIBLE);
                 firebaseAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (!task.isSuccessful()) {
-                                    Toast.makeText(LoginActivity.this, "Error! Can't sign in!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(LoginActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
                                 }
+                                else {
+                                    if(firebaseAuth.getCurrentUser().isEmailVerified()){
+                                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                        finish();
+                                    }else {
+                                        Toast.makeText(LoginActivity.this, "Please verify your email address"
+                                                , Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                                loginProgressBar.setVisibility(View.INVISIBLE);
                             }
                         });
             }
@@ -96,6 +123,15 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        btnForgotPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent resetPassIntent = new Intent(LoginActivity.this, ResetPassActivity.class);
+                startActivity(resetPassIntent);
+
             }
         });
     }
